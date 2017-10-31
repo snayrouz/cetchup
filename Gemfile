@@ -24,6 +24,7 @@ gem 'acts_as_list'
 gem 'ejs'
 gem 'bcrypt'
 gem 'active_model_serializers'
+gem 'bootstrap-sass'
 
 
 group :development, :test do
