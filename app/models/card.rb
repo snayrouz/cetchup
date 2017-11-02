@@ -5,4 +5,5 @@ class Card < ApplicationRecord
   has_one :board, through: :list
 
   validates :list_id, :title, presence: true
+  default_scope { order(:position) }
 end
