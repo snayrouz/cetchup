@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Cetchup</title>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "ember/application.js" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+
+    <div id="header">
+    <div class="header-logo">
+      <h1><a href="#/">Cetchup</a></h1>
+    </div>
+    <div class="header-user">
+      <% if logged_in? %>
+        <%= link_to image_tag(current_user.gravatar_url(30), class: "avatar"), "#" %>
+        <p>(<%= link_to "logout", logout_url %>)</p>
+      <% else %>
+        <p><%= link_to "login", login_url %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div id="ember-app" class="clearfix">
+    <%= yield %>
+  </div>
+
+  <div id="footer">
+    <p>
+      Cetchup is built with Ruby on Rails, Ember.js, and espresso.
+    </p>
+    <p>
+      <a href="http://naydaysite.wordpress.com">My Blog</a>.
+    </p>
+  </div>
+
+  </body>
+</html>
