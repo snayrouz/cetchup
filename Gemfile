@@ -25,6 +25,7 @@ gem 'ejs'
 gem 'bcrypt'
 gem 'active_model_serializers'
 gem 'bootstrap-sass'
+gem 'ember-rails'
 
 
 group :development, :test do
