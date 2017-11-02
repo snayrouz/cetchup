@@ -1,0 +1,2 @@
+class BoardActivity < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class CardActivity < ApplicationRecord
+end
