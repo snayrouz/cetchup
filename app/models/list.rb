@@ -1,7 +1,8 @@
 class List < ApplicationRecord
+  attr_accessible :board_id, :title, :open, :position
+  default_scope order: "lists.position"
   acts_as_list
 
   belongs_to :board
-  validates :board_id, :title, presence: true
-  default_scope { order(:position) }
+  has_many :cards, dependent: :destroy
 end
