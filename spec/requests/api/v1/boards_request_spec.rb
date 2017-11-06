@@ -50,12 +50,17 @@ describe 'Boards API' do
     expect(board).to_not have_key(:updated_at)
   end
 
-  it 'can delete an board' do
-    board = create(:board)
-    expect(board.count).to eq(1)
-    delete "/api/v1/boards/#{board.id}"
+  it 'can update an board' do
+   id = create(:board).id
+   previous_name = Board.last.name
+   board_params = { name: "Summer", description: "Summer Plans", }
 
-    expect(response).to have_http_status(:no_content)
-    expect{board.find(board.id)}.to raise_error(ActiveRecord::RecordNotFound)
+   put "/api/v1/boards/#{id}", params: {board: board_params}
+   board = Board.find_by(id: id)
+
+   expect(response).to have_http_status(200)
+   expect(board.name).to eq(board_params[:name])
+   expect(board.description).to eq(board_params[:description])
+   expect(board.name).to_not eq(previous_name)
   end
 end
